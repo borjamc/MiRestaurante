@@ -3,6 +3,9 @@
 namespace MirestauranteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Restaurante
@@ -55,6 +58,10 @@ class Restaurante
      *
      * @ORM\Column(name="precio", type="integer")
      * @Assert\NotBlank()
+     * @Assert\Range(
+     *      min = 0.1,
+     *      minMessage = "El numero tine que ser minimo {{ limit }}",
+     * )
      */
     private $precio;
 

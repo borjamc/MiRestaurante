@@ -112,6 +112,26 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'MirestauranteBundle\\Controller\\DefaultController::indexAction',  '_route' => 'mirestaurante_default_index',);
         }
 
+        // mirestaurante_default_nuevatapa
+        if ('/nuevatapa' === $pathinfo) {
+            return array (  '_controller' => 'MirestauranteBundle\\Controller\\DefaultController::nuevatapaAction',  '_route' => 'mirestaurante_default_nuevatapa',);
+        }
+
+        // editar
+        if (0 === strpos($pathinfo, '/editartapa') && preg_match('#^/editartapa/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'editar')), array (  '_controller' => 'MirestauranteBundle\\Controller\\DefaultController::editarTapaAction',));
+        }
+
+        // borrar
+        if (0 === strpos($pathinfo, '/borrar') && preg_match('#^/borrar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'borrar')), array (  '_controller' => 'MirestauranteBundle\\Controller\\DefaultController::borrarAction',));
+        }
+
+        // tapa
+        if ('/listartapa' === $pathinfo) {
+            return array (  '_controller' => 'MirestauranteBundle\\Controller\\DefaultController::allAction',  '_route' => 'tapa',);
+        }
+
         // homepage
         if ('' === $trimmedPathinfo) {
             if (substr($pathinfo, -1) !== '/') {

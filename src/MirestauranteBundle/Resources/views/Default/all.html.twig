@@ -1,0 +1,30 @@
+{% extends '::base.html.twig' %}
+{% block li1 %}
+<li class="nav-item">
+{% endblock %}
+{% block li2 %}
+<li class="nav-item active">
+{% endblock %}
+{% block li3 %}
+<li class="nav-item">
+  {% endblock %}
+{% block section %}
+<table border="3px">
+  <tr>
+<ul>
+      {% for tapa in tapas %}
+
+      <td class="lista" class="miniimagen" style="background-image: url({{asset("img/" ~ tapa.foto)}})">
+        <h2>{{ tapa.nombre }}</h2>
+        <p>Descripcion: {{tapa.descripcion}}</p>
+        <p>Fecha de Creacion: {{tapa.fechaCreacion|date('Y-m-d')}}</p>
+        <p>Precio: {{tapa.precio}}</p>
+        <p><a href="{{ path('borrar', {'id': tapa.id}) }}">Borrar</a></p>
+        <p><a href="{{ path('editar', {'id': tapa.id}) }}">Actualizar</a></p>
+        </td>
+      {% endfor %}
+
+</ul>
+</tr>
+</table>
+{% endblock %}
