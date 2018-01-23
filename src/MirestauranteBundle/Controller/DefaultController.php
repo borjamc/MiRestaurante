@@ -19,8 +19,8 @@ class DefaultController extends Controller
     }
 
     /**
- * @Route("/nuevatapa")
- */
+    * @Route("/nuevatapa")
+    */
 public function nuevatapaAction(Request $request)
 {
   $tapa=new Restaurante();

@@ -1,3 +1,13 @@
+usuarios:
+    resource: "@UsuariosBundle/Controller/"
+    type:     annotation
+    prefix:   /usuarios/
+
+admin:
+    resource: "@AdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin/
+
 mirestaurante:
     resource: "@MirestauranteBundle/Controller/"
     type:     annotation

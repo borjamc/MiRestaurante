@@ -103,6 +103,33 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        elseif (0 === strpos($pathinfo, '/usuarios')) {
+            // usuarios
+            if ('/usuarios/listarusuarios' === $pathinfo) {
+                return array (  '_controller' => 'UsuariosBundle\\Controller\\DefaultController::allAction',  '_route' => 'usuarios',);
+            }
+
+            // user_registration
+            if ('/usuarios/register' === $pathinfo) {
+                return array (  '_controller' => 'UsuariosBundle\\Controller\\DefaultController::registerAction',  '_route' => 'user_registration',);
+            }
+
+            // usuarios_default_nuevousuario
+            if ('/usuarios/nuevaUsuario' === $pathinfo) {
+                return array (  '_controller' => 'UsuariosBundle\\Controller\\DefaultController::nuevoUsuarioAction',  '_route' => 'usuarios_default_nuevousuario',);
+            }
+
+        }
+
+        // admin_default_index
+        if ('/admin' === $trimmedPathinfo) {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'admin_default_index');
+            }
+
+            return array (  '_controller' => 'AdminBundle\\Controller\\DefaultController::indexAction',  '_route' => 'admin_default_index',);
+        }
+
         // mirestaurante_default_index
         if ('' === $trimmedPathinfo) {
             if (substr($pathinfo, -1) !== '/') {
